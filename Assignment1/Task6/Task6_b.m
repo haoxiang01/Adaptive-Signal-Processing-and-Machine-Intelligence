@@ -22,10 +22,10 @@ Xdenoise= U_Xnoise * S_Xnoise_r * V_Xnoise';
 
 figure;subplot(2, 1, 1);
 subplot(2, 1, 1);
-stem(diag(S_X), 'Color','r','Marker','o','LineWidth', 1.5); 
+stem(diag(S_X),'filled','Color','r','Marker','o','LineWidth', 1.5); 
 hold on;
 stem(diag(S_Xnoise),'filled', 'Color','g','Marker','s','LineWidth', 1.5); 
-stem(diag(S_Xdenoise), 'filled', 'Color','b','LineWidth', 1.5); 
+stem(diag(S_Xdenoise),'Color','b','Marker','o','LineWidth', 1.5); 
 title('Singular Values of $X_{denoised}$', 'Interpreter', 'latex');
 xlabel('Index', 'Interpreter', 'latex');
 ylabel('Singular Value', 'Interpreter', 'latex');
