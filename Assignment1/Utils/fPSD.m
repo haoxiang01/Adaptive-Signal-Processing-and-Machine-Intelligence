@@ -1,6 +1,5 @@
-function [pxx_x,f_pxx] = fPSD(input, Fs, type)
+function [pxx_x,f_pxx] = fPSD(input, Fs, nfft, type)
 
-nfft = 2048;
 f_pxx = Fs*(0:(nfft/2))/nfft;
 
 if strcmp(type, 'def1')

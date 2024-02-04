@@ -15,6 +15,7 @@ Fs = 1000; % Sampling frequency in Hz
 T = 1/Fs; % Sampling period in s
 L = 200; % Length of the signal
 t = (0:L-1)*T; % Time vector
+nfft = 2048;
 
 % Impulse signal x1(t)
 x = zeros(1,L); % Initialize signal with zeros
@@ -24,8 +25,8 @@ x(1) = 10000; % Impulse at t=0
 
 % ACF and PSD Calculation
 [acf_x, lags] = xcorr(x, 'biased'); % ACF
-[pxx1_x, f_pxx1] = fPSD(acf_x, Fs,'def1');% PSD def1
-[pxx2_x, f_pxx2] = fPSD(x, Fs,'def2');% PSD def2
+[pxx1_x, f_pxx1] = fPSD(acf_x, Fs, nfft,'def1');% PSD def1
+[pxx2_x, f_pxx2] = fPSD(x, Fs, nfft, 'def2');% PSD def2
 
 %Plotting
 figure;
