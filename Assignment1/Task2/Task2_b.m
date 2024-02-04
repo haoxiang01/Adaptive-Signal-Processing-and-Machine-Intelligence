@@ -31,7 +31,7 @@ wLen = tLen / dt; % window length
 [Px_bartlett_10, f_bartlett_10] = fBartlett(POz,fs,nfft,wLen);
 hold on;
 plot(f_bartlett_10, 10*log10(Px_bartlett_10), 'r', 'LineWidth', 1);
-title('Standard Periodogram');
+title("Standard VS 10s-Bartlett's");
 xlabel('Frequency (Hz)');
 ylabel('Power/Frequency (dB/Hz)');
 xlim([0 60]);
@@ -53,7 +53,7 @@ plot(f_bartlett_10, 10*log10(Px_bartlett_10), 'r', 'LineWidth', 1.5);
 hold on;
 plot(f_bartlett_5, 10*log10(Px_bartlett_5), 'g', 'LineWidth', 1.5);
 plot(f_bartlett_1, 10*log10(Px_bartlett_1), 'b', 'LineWidth', 1.5);
-title('Standard Periodogram');
+title("Bartlett's Periodogram");
 xlabel('Frequency (Hz)');
 ylabel('Power/Frequency (dB/Hz)');
 xlim([11 20]);
