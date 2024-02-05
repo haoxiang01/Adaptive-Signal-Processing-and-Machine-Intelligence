@@ -48,7 +48,7 @@ legend("Trial1","Trial2","Trial3", 'Location', 'best');
 set(gca, 'FontSize', 10);
 
 %% Bartlett periodogram
-tLen = 100;
+tLen = 200;
 wLen = tLen*fsRRI;
 [P_bartlett_1, f_bartlett_1] = fBartlett(xRRI1',fsRRI,nfft,wLen);
 [P_bartlett_2, f_bartlett_2] = fBartlett(xRRI2',fsRRI,nfft,wLen);
@@ -66,7 +66,7 @@ legend("Trial1","Trial2","Trial3", 'Location', 'best');
 set(gca, 'FontSize', 10);
 
 %%AR spectrum estimate
-order = 20;
+order = 50;
 bestOrder = order;
 coeff1 = aryule(xRRI1, order); % estimate AR coefficients
 PSD_RRI_1_AR = fARSpectrum(-coeff1(2:end), coeff1(1), nfft,'dB');

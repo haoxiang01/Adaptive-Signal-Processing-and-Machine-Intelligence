@@ -24,7 +24,7 @@ wgn = randn(1, length(t));
 sin = 0.8*sin(2*pi*40*t) + 1.1*sin(2*pi*70*t)+ 0.3*randn(1, length(t));
 noiseFilter = filter([1/4 1/4 1/4 1/4], 1, wgn);
 
-x = sin;
+x = wgn;
 %ACF
 [rx_biased, lagsx_biased] = xcorr(x, 'biased'); % ACF
 [rx_unbiased, lagsx_unbiased] = xcorr(x, 'unbiased'); % ACF
