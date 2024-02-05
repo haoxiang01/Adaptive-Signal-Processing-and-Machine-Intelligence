@@ -67,7 +67,7 @@ hold on;
 % Plot best estimated PSD
 plot(normalizedFrequency, PSDEstimatedBest, '-b', 'LineWidth', 1.5); 
 grid on;
-xlabel('Normalized Frequency $\times \pi$', 'FontSize', fontsize, 'interpreter', 'latex'); 
+xlabel('Frequency', 'FontSize', fontsize, 'interpreter', 'latex'); 
 ylabel('Power/Frequency (dB/Hz)', 'FontSize', fontsize, 'interpreter', 'latex'); 
 xlim([0 1]); 
 legend('True PSD', ['Best Estimated PSD (Model Order=' num2str(bestOrder) ')'], 'FontSize', 10, 'interpreter', 'latex', 'Location', 'best');
