@@ -46,7 +46,7 @@ e_GNGD_Avg = w_GNGD_Avg ./K;
 % Plotting
 figure; 
 fontsize = 14;
-lineWidth = 2.5;
+lineWidth = 2;
 plot(w_GNGD_Avg(1,:), '-b', 'LineWidth', lineWidth);
 hold on;
 plot(w_B_Avg(1,:), '-r', 'LineWidth', lineWidth);

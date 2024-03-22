@@ -1,6 +1,6 @@
-function [errors,weights] = fLMS(x, order, mu, leak)
+function [errors,weights] = fLMS(x, M, mu, leak)
 
-w = zeros(order,1);
+w = zeros(M,1);
 N = length(x);
 errors = [];
 weights = [];
