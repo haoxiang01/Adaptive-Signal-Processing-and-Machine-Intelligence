@@ -17,7 +17,8 @@ N = 1000;
 mu = [0.05 0.01];
 epoch = 100;
 order = length(a);
-
+linewidth = 0.1; 
+FontSize = 16;
 %% AR model
 model = arima('AR',a,'Constant',0,'Variance',sigma);
 x = simulate(model, N,'Numpaths',100);
@@ -32,13 +33,13 @@ for i = 1:epoch
 end
 error_average_1 = mean(pow2db(errors_1.^2),1);
 subplot(2,2,1);
-plot(pow2db(errors_1(1,:).^2),'-b');
-xlabel('Time','FontSize',18);ylabel('Squared Error (dB)','FontSize',18);
-title('1 Realisation (\mu = 0.05)','FontSize',18);
+plot(pow2db(errors_1(1,:).^2),'-b','LineWidth',linewidth);
+xlabel('Time','FontSize',FontSize,'interpreter','latex');ylabel('Squared Error (dB)','FontSize',FontSize,'interpreter','latex');
+title('Single Realisation ($\mu$ = 0.05)','FontSize',FontSize,'interpreter','latex');
 subplot(2,2,3);
-plot(error_average_1,'-b');
-xlabel('Time','FontSize',18);ylabel('MSE (dB)','FontSize',18);
-title('100 Realisation (\mu = 0.05)','FontSize',18);
+plot(error_average_1,'-b','LineWidth',linewidth);
+xlabel('Time','FontSize',FontSize,'interpreter','latex');ylabel('MSE (dB)','FontSize',FontSize,'interpreter','latex');
+title('100 Realisations ($\mu$ = 0.05)','FontSize',FontSize,'interpreter','latex');
 
 errors_2 = zeros(epoch,N-2);
 weights_2 = zeros(order,1);
@@ -49,13 +50,14 @@ for i = 1:epoch
 end
 error_average_2 = mean(pow2db(errors_2.^2),1);
 subplot(2,2,2);
-plot(pow2db(errors_2(1,:).^2),'-r');
-xlabel('Time','FontSize',18);ylabel('Squared Error (dB)','FontSize',18);
-title('1 Realisation (\mu = 0.01)','FontSize',18);
+plot(pow2db(errors_2(1,:).^2),'-r','LineWidth',linewidth);
+xlabel('Time','FontSize',FontSize,'interpreter','latex');ylabel('Squared Error (dB)','FontSize',FontSize,'interpreter','latex');
+title('Single Realisation ($\mu$ = 0.01)','FontSize',FontSize,'interpreter','latex');
 subplot(2,2,4);
-plot(error_average_2,'-r');
-xlabel('Time');ylabel('MSE (dB)','FontSize',18);
-title('100 Realisation (\mu = 0.01)','FontSize',18);
+plot(error_average_2,'-r','LineWidth', linewidth);
+xlabel('Time','FontSize',FontSize,'interpreter','latex');ylabel('MSE (dB)','FontSize',FontSize,'interpreter','latex');
+title('100 Realisations ($\mu$ = 0.01)','FontSize',FontSize,'interpreter','latex');
+set(gcf, 'Position', [100, 100, 800, 600]); 
 
 %% Misadjustment
 EMSE_1 = mean(mean(errors_1(:,400:end).^2,1)) - sigma;

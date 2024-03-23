@@ -19,7 +19,7 @@ N = 1000;
 mu = 0.01;  % adjust here
 epoch = 100;
 order = length(a);
-gamma = 0.8; % adjust here
+gamma = 0.01; % adjust here
 
 %% AR model
 model = arima('AR',a,'Constant',0,'Variance',sigma);
