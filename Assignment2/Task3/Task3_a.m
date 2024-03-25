@@ -17,15 +17,15 @@ N = 1000;
 n = 1:N;
 mu = 0.01;
 epoch = 100;
-deltas = 3;
+deltas = 4;
 M = 5; % Order
-fontsize = 14;
+fontsize = 18;
 lineWidth = 2;
 
 x = sin(w0 .* n);
 
 % loop with deltas
-for i = 0:1:deltas
+for i = 1:1:deltas
     x_hat_sum = zeros(N,1);
     for j = 1:epoch
         eta = randn(N,1);
@@ -36,7 +36,7 @@ for i = 0:1:deltas
     end
     x_hat_avg = x_hat_sum ./ epoch;
     
-    subplot(2,2,i+1);
+    subplot(2,2,i);
     hold on;
     % plot(noise, '-c', 'LineWidth', 1);
     plot(x, '-b', 'LineWidth', lineWidth);
@@ -45,7 +45,7 @@ for i = 0:1:deltas
     title(['Delay $\Delta$ = ' num2str(i)], 'FontSize', fontsize, 'Interpreter', 'latex');
     xlabel('Step $n$', 'FontSize', fontsize, 'Interpreter', 'latex');
     ylabel('Magnitude', 'FontSize', fontsize, 'Interpreter', 'latex');
-    set(gca, 'FontSize', 18);
+    set(gca, 'FontSize', fontsize);
     set(gcf, 'Position', [100, 100, 800, 600]); 
     grid on;
 end

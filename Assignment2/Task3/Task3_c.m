@@ -19,7 +19,7 @@ mu = 0.01;
 epoch = 100;
 delta = 3;
 M = 10; % Order
-fontsize = 14;
+fontsize = 20;
 lineWidth = 2;
 x = sin(w0 * n);
 
@@ -53,6 +53,7 @@ hold on;
 plot(x,'-b','LineWidth',lineWidth);
 plot(x_hat_avg_ANC,'-g','LineWidth',lineWidth);
 plot(x_hat_avg_ALE,'-r','LineWidth',lineWidth);
+set(gca, 'FontSize', 16);
 legend('Groudtruth','Estimation (ANC)','Estimation (ALE)','FontSize',fontsize, 'interpreter','latex','Location', 'southeast');
 title(['Delay $\Delta$ = ' num2str(delta)], 'FontSize', fontsize, 'Interpreter', 'latex');
 xlabel('Step $n$','FontSize',fontsize,'interpreter','latex');

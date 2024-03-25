@@ -9,9 +9,11 @@ clear
 close all
 addpath('../Utils/');
 
+fontsize = 18;
+lineWidth = 2;
 M = 1;
 num = 2001;
-rho = 0.0005;
+rho = 0.0002;
 K = 100;
 mu = 0.01; % adjust here
 w_GNGD_Avg = zeros(M, num+1);
@@ -45,8 +47,6 @@ e_GNGD_Avg = w_GNGD_Avg ./K;
 
 % Plotting
 figure; 
-fontsize = 14;
-lineWidth = 2;
 plot(w_GNGD_Avg(1,:), '-b', 'LineWidth', lineWidth);
 hold on;
 plot(w_B_Avg(1,:), '-r', 'LineWidth', lineWidth);
@@ -55,13 +55,12 @@ grid on;
 xlim([0, 2000]); 
 
 % Legend
-mu = 0.1; 
 legend(['GNGD $\mu$ = ' num2str(mu)], ['Benveniste $\mu$(0) = ' num2str(mu)], ...
-       'FontSize', fontsize, 'interpreter', 'latex', 'Location', 'best');
+       'FontSize', fontsize, 'interpreter', 'latex', 'Location', 'southeast');
 
 xlabel('Step $n$', 'FontSize', fontsize, 'interpreter', 'latex');
-ylabel('Weight Estimates $w(n)$', 'FontSize', fontsize, 'interpreter', 'latex');
-title(['Weight Estimates (\mu = ' num2str(mu) ')'],'FontSize',18);
+ylabel('Estimated Weight $w(n)$', 'FontSize', fontsize, 'interpreter', 'latex');
+title(['Weight Estimation ($\mu$ = ' num2str(mu) ', $\rho$ = ' num2str(rho) ')'],'FontSize',fontsize, 'interpreter', 'latex');
 set(gca, 'FontSize', fontsize);
 set(gcf, 'Position', [100, 100, 800, 600]); 
 

@@ -10,6 +10,8 @@ clear
 close all
 addpath('../Utils/');
 
+fontsize = 20;
+lineWidth = 2;
 M = 1;
 numSteps = 2001;
 mu = 0.01;
@@ -58,8 +60,7 @@ w_N_Avg = w_N_Avg / K;
 w_N_Avg_Altered = w_N_Avg_Altered / K;
 
 figure;
-fontsize = 14;
-lineWidth = 2;
+
 plot(0.9 - w_N_Avg(1,:), '-b', 'LineWidth', lineWidth);
 hold on;
 plot(0.9 - w_N_Avg_Altered(1,:), '-g', 'LineWidth', lineWidth);
@@ -69,14 +70,15 @@ plot(0.9 - w_B_Avg(1,:), '-m', 'LineWidth', lineWidth);
 
 grid on;
 xlim([0, 2000]);
+set(gca, 'FontSize', 16);
 legend(['Standard LMS, $\mu=' num2str(mu) '$'], ...
        ['Standard LMS, $\mu=0.1$'], ...
        ['Matthews, $\mu(0)=' num2str(mu) '$'], ...
        ['Ang \& Farhang, $\mu(0)=' num2str(mu) '$'], ...
        ['Benveniste, $\mu(0)=' num2str(mu) '$'], ...
-       'FontSize', fontsize, 'interpreter', 'latex', 'Location', 'best');
+       'FontSize', 18, 'interpreter', 'latex', 'Location', 'northeast');
 xlabel('Step $n$', 'FontSize', fontsize, 'interpreter', 'latex');
 ylabel('Weight Error $w_o - w(n)$', 'FontSize', fontsize, 'interpreter', 'latex');
-title('Comparison of LMS Algorithm within GASS Variants', 'FontSize', fontsize+1, 'interpreter', 'latex');
+% title('Comparison of LMS Algorithm within GASS Variants', 'FontSize', fontsize+1, 'interpreter', 'latex');
 
 set(gcf, 'Position', [100, 100, 800, 600]); 

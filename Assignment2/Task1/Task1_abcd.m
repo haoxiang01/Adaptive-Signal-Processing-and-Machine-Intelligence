@@ -31,6 +31,7 @@ for i = 1:epoch
    [errors_1(i,:),weights] = fLMS(x_AR, order, mu(1), 0);
    weights_1 = weights_1 + mean(weights(:,400:end),2);
 end
+set(gca, 'FontSize', 16);
 error_average_1 = mean(pow2db(errors_1.^2),1);
 subplot(2,2,1);
 plot(pow2db(errors_1(1,:).^2),'-b','LineWidth',linewidth);

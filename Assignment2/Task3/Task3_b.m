@@ -20,7 +20,7 @@ epoch = 100;
 deltas = 0:25;
 M = [5,10,15,20]; % Order
 MSPEs = zeros(length(deltas),1);
-fontsize = 14;
+fontsize = 20;
 lineWidth = 2;
 
 x = sin(w0 .* n);
@@ -46,6 +46,7 @@ for m = 1:length(M)
 plot(deltas, 10*log10(MSPEs),'Marker',markers{m},'Color', colors(m),'LineWidth',lineWidth);
 hold on;grid on;
 end
+set(gca, 'FontSize', 16);
 legend('$M$ = 5','$M$ = 10','$M$ = 15','$M$ = 20','FontSize',fontsize,'interpreter','latex','Location', 'northeast');
 xlabel('Delay $\Delta$','FontSize',fontsize,'interpreter','latex');
 ylabel('MSPE $(dB)$','FontSize',fontsize,'interpreter','latex');
