@@ -14,7 +14,8 @@ fontsize = 20;
 lineWidth = 2;
 M = 1;
 numSteps = 2001;
-mu = 0.01;
+mu = 0.1;
+mu_alt = 0.01;
 rho = 0.0003;
 K = 100;
 w_B_Avg = zeros(M, numSteps+1);% Benveniste's method
@@ -49,7 +50,7 @@ for k = 1:K
     w_N_Avg = w_N_Avg + w_N;
 
     % Standard method mu = 0.1
-    [w_N_Altered] = fLMS_GASS_MA1(x, eta, 'N', 0.1, rho, M);  
+    [w_N_Altered] = fLMS_GASS_MA1(x, eta, 'N', mu_alt, rho, M);  
     w_N_Avg_Altered = w_N_Avg_Altered + w_N_Altered;
 end
 
@@ -72,7 +73,7 @@ grid on;
 xlim([0, 2000]);
 set(gca, 'FontSize', 16);
 legend(['Standard LMS, $\mu=' num2str(mu) '$'], ...
-       ['Standard LMS, $\mu=0.1$'], ...
+       ['Standard LMS, $\mu= ' num2str(mu_alt) '$'], ...
        ['Matthews, $\mu(0)=' num2str(mu) '$'], ...
        ['Ang \& Farhang, $\mu(0)=' num2str(mu) '$'], ...
        ['Benveniste, $\mu(0)=' num2str(mu) '$'], ...

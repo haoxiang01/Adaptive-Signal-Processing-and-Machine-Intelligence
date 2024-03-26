@@ -19,7 +19,6 @@ e = zeros(1, length(x));        % Error vector
 phi = zeros(M, length(x));      % Auxiliary variable for GASS
 mu(M+2) = mu_initial;           % Set initial step size
 
-% Main loop to update weights and step size
 for n = M+2:length(x)
     % Extract the current and previous input signal samples
     x_n = flip(eta(n-M:n-1));
@@ -35,7 +34,6 @@ for n = M+2:length(x)
     
     x_n_1 = flip(x(n-M-1:n-2)); 
     
-    % Update phi and mu based on the specified GASS method
     if strcmp(type, 'B') % Benveniste's method
         phi_n_1 = phi(:,n-1);
         phi_n = (eye(M) - mu(n-1) * (x_n_1 * x_n_1')) * phi_n_1 + e(n-1) * x_n_1;
