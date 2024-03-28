@@ -12,17 +12,17 @@ addpath('../Utils/');
 addpath('../Wind-dataset/');
 
 %% Initializaiton
-fontsize = 20;
+fontsize = 30;
 lineWidth = 2;
 % data_type = 'Low Wind'; % Change here for low-wind, medium-wind, and high-wind
-%data_type = 'Medium Wind';
+% data_type = 'Medium Wind';
 data_type = 'High Wind';
 
 M = 30;% order of filter
 
 if strcmp(data_type, 'Low Wind')
     load low-wind.mat;
-    mu = 0.0001;
+    mu = 0.1;
 elseif strcmp(data_type, 'Medium Wind')
     load medium-wind.mat;
     mu = 1e-2;
@@ -34,11 +34,11 @@ end
 % plot data
 figure;
 scatter(v_east, v_north, 10,'blue','filled');
-set(gca, 'FontSize', 12);
+set(gca, 'FontSize', 18);
 axis equal;axis square;grid on;
 xlabel('Real','FontSize',fontsize,'interpreter','latex');
 ylabel('Imag','FontSize',fontsize,'interpreter','latex');
-title('Low Wind','FontSize',fontsize,'interpreter','latex');
+% title(data_type,'FontSize',fontsize,'interpreter','latex');
 set(gcf, 'Position', [100, 100, 800, 600]);
 
 % circularity coefficient 
@@ -63,9 +63,9 @@ plot(errors_CLMS,'-b','LineWidth',lineWidth);
 hold on
 grid on
 plot(errors_ACLMS,'-r','LineWidth',lineWidth);
-set(gca, 'FontSize', 12);
-title(data_type,'FontSize',fontsize,'interpreter','latex');
+set(gca, 'FontSize', 20);
+% title(data_type,'FontSize',fontsize,'interpreter','latex');
 ylabel('MPSE (dB)','FontSize',fontsize,'interpreter','latex');
 xlabel('Filter order $M$','FontSize',fontsize,'interpreter','latex');
-legend('CLMS','ACLMS','FontSize',fontsize,'interpreter','latex');
+legend('CLMS','ACLMS','FontSize',25,'interpreter','latex','Location', 'northwest');
 set(gcf, 'Position', [100, 100, 800, 600]);

@@ -36,8 +36,8 @@ for i = 1:epoch
 end
 errors_CLMS_avg = errors_CLMS ./ epoch;
 errors_ACLMS_avg = errors_ACLMS ./ epoch;
-errors_CLMS = pow2db(errors_CLMS);
-errors_ACLMS = pow2db(errors_ACLMS);
+errors_CLMS_avg = pow2db(errors_CLMS_avg);
+errors_ACLMS_avg = pow2db(errors_ACLMS_avg);
 
 %% plotting
 figure;
