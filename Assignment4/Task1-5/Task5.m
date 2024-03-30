@@ -9,7 +9,7 @@ clear
 close all
 addpath('../Utils/');
 addpath('../Data/');
-fontsize = 20;
+fontsize = 25;
 lineWidth = 1.5;
 
 load time-series.mat
@@ -35,7 +35,7 @@ figure;
 plot(y,'-b','LineWidth', lineWidth);
 hold on;
 plot(y_hat,'-r','LineWidth', lineWidth);
-set(gca, 'FontSize', 12);
+set(gca, 'FontSize', 14);
 grid on;
 ylabel('Magnitude','FontSize',fontsize,'interpreter','latex');
 xlabel('Sample $n$','FontSize',fontsize,'interpreter','latex');

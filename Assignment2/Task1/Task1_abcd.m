@@ -17,7 +17,7 @@ N = 1000;
 mu = [0.05 0.01];
 epoch = 100;
 order = length(a);
-linewidth = 0.1; 
+linewidth = 1; 
 FontSize = 16;
 %% AR model
 model = arima('AR',a,'Constant',0,'Variance',sigma);

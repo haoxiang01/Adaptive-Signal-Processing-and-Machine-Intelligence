@@ -9,7 +9,7 @@ clc
 clear
 close all
 addpath('../Utils/');
-fontsize = 20;
+fontsize = 25;
 lineWidth = 1.5;
 
 %% Initialization
@@ -34,21 +34,21 @@ y = exp( 1i * (2*pi/fs * phi) ) + eta;
 %% Plot FM
 figure;
 plot(1:1500,f,'-b','LineWidth',lineWidth);
-set(gca, 'FontSize', 12);
+set(gca, 'FontSize', 16);
 xlabel('Time','FontSize',fontsize,'interpreter','latex'); 
 ylabel('Frequency (Hz)','FontSize',fontsize,'interpreter','latex');
 xlim([1,1500]);
 ylim([0,500]);
 grid on;
-title('Frequency','FontSize',fontsize,'interpreter','latex');
+% title('Frequency','FontSize',fontsize,'interpreter','latex');
 set(gcf, 'Position', [100, 100, 800, 600]);
 
 figure;
 plot(wrapToPi(phi),'-b','LineWidth',lineWidth);
-set(gca, 'FontSize', 12);
+set(gca, 'FontSize', 16);
 xlabel('Time','FontSize',fontsize,'interpreter','latex'); 
 ylabel('Phase (rad)','FontSize',fontsize,'interpreter','latex');
-title('Phase','FontSize',fontsize,'interpreter','latex');
+% title('Phase','FontSize',fontsize,'interpreter','latex');
 set(gcf, 'Position', [100, 100, 800, 600]);
 
 %% Task a: AR(1) model
@@ -56,11 +56,11 @@ a = aryule(y,1);
 [h,w] = freqz(1, a, N, fs);
 figure;
 plot(w,pow2db(abs(h).^2),'b','Linewidth',2);
-set(gca, 'FontSize', 12);
+set(gca, 'FontSize', 16);
 xlabel('Frequency (Hz)','FontSize',fontsize,'interpreter','latex');
 ylabel('Magnitude (dB)','FontSize',fontsize,'interpreter','latex');
 grid on;
-title('Estimated Power Spectrum of FM Signal','FontSize',fontsize,'interpreter','latex')
+% title('Estimated Power Spectrum of FM Signal','FontSize',fontsize,'interpreter','latex')
 set(gcf, 'Position', [100, 100, 800, 600]);
 
 %% Task b: Adaptive AR(1) model
@@ -81,8 +81,8 @@ mesh(X,Y,H);
 view(2);
 colormap;
 colorbar;
-set(gca, 'FontSize', 12);
+set(gca, 'FontSize', 16);
 ylabel('Frequancy (Hz)','FontSize',fontsize,'interpreter','latex');
 xlabel('Time','FontSize',fontsize,'interpreter','latex');
-title('Estimated Time-frequency spectrum','FontSize',fontsize,'interpreter','latex');
+% title('Estimated Time-frequency spectrum','FontSize',fontsize,'interpreter','latex');
 set(gcf, 'Position', [100, 100, 800, 600]);

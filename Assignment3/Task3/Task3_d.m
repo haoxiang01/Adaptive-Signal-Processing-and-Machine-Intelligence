@@ -10,7 +10,7 @@ clear
 close all
 addpath('../Utils/');
 addpath('../EEG-dataset/');
-fontsize = 20;
+fontsize = 25;
 lineWidth = 1.5;
 
 load 'EEG_Data_Assignment1.mat';
@@ -19,15 +19,15 @@ a = 1000;
 N = 1200;
 y = POz(a:a+N-1);
 
-mu = 1;
+mu = 0.01;
 [h,~] = fDFTCLMS(y,mu);
 % H = abs(h).^2;
 % medianH = 50*median(median(H));
 % H(H > medianH) = medianH;
-
+% 
 H = abs(h);
 surf(1:N, (0:N-1).*fs/N, H,'LineStyle','none');
-set(gca, 'FontSize', 12);
+set(gca, 'FontSize', 16);
 view(2);
 colormap;
 colorbar;

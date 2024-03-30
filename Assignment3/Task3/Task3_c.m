@@ -9,7 +9,7 @@ clc
 clear
 close all
 addpath('../Utils/');
-fontsize = 20;
+fontsize = 25;
 lineWidth = 1.5;
 
 %% Initialization
@@ -33,17 +33,17 @@ y = exp( 1i * (2*pi/fs * phi) ) + eta;
 %% DFT-CLMS algorithm
 mu = 1;
 [h,~] = fDFTCLMS(y,mu);
-% H = abs(h).^2;
-% medianH = 50*median(median(H));
-% H(H > medianH) = medianH;
+H = abs(h).^2;
+medianH = 50*median(median(H));
+H(H > medianH) = medianH;
 
-H = abs(h);
+% H = abs(h);
 surf(1:N, (0:N-1).*fs/N, abs(H),'LineStyle','none');
-set(gca, 'FontSize', 12);
+set(gca, 'FontSize', 16);
 view(2);
 ylim([0 600]);
 ylabel('Frequancy (Hz)','FontSize',fontsize,'interpreter','latex');
-xlabel('Time','FontSize',fontsize,'interpreter','latex');
+xlabel('Time $n$','FontSize',fontsize,'interpreter','latex');
 colormap;
 colorbar;
 % title('Time-frequency Spectrum of FM Signal estimated by DFT-CLMS','FontSize',fontsize,'interpreter','latex');

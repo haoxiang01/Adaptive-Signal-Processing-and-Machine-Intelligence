@@ -11,7 +11,7 @@ addpath('../Utils/');
 
 
 %% Initilization
-fontsize = 20;
+fontsize = 25;
 lineWidth = 2;
 opt = 'o';
 opt_size = 60;
@@ -40,11 +40,11 @@ grid on;
 [~,h_balance,g_balance] = fACLMS(V_complex, V_complex, M, mu);
 f0_estimated = fs/(2*pi) * atan(sqrt(imag(h_balance).^2 - abs(g_balance).^2 ) ./ real(h_balance));
 plot(real(f0_estimated),'-b','LineWidth', lineWidth);
-set(gca, 'FontSize', 12);
-legend('CLMS','ACLMS','FontSize',fontsize,'interpreter','latex');
+set(gca, 'FontSize', 14);
+legend(['CLMS, $\mu = ' num2str(mu) '$'],['ACLMS, $\mu = ' num2str(mu) '$'],'FontSize',fontsize,'interpreter','latex','Location','southeast');
 xlabel('Step $n$','FontSize',fontsize,'interpreter','latex');
-ylabel('Estimated Frequency $f_o$ (Hz)','FontSize',fontsize,'interpreter','latex');
-title('Balanced','FontSize',fontsize,'interpreter','latex');
+ylabel('Estimated Frequency $f_0$ (Hz)','FontSize',fontsize,'interpreter','latex');
+% title('Balanced','FontSize',fontsize,'interpreter','latex');
 set(gcf, 'Position', [100, 100, 800, 600]);
 
 
