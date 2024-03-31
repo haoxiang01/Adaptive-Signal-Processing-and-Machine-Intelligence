@@ -7,8 +7,10 @@
 clc;
 clear variables;
 close all;
+fontsize = 30;
+lineWidth = 2;
+
 addpath('../Utils/');
-fontsize = 13;
 % Number of samples
 totalSamples = 1000;
 % Coefficients of the AR process
@@ -48,11 +50,13 @@ for i = 1:length(modelOrders)
 end
 
 figure;
-subplot(2,1,1);
-semilogy(modelOrders, mseErrors, 'r-*', 'LineWidth', 1); % Plot MSE vs. model order
+% subplot(2,1,1);
+semilogy(modelOrders, mseErrors, 'r-*', 'LineWidth', lineWidth); % Plot MSE vs. model order
+set(gca, 'FontSize', 20);
 xlabel('Model Order $p$', 'FontSize', fontsize, 'interpreter', 'latex'); 
 ylabel('Mean Square Error', 'FontSize', fontsize, 'interpreter', 'latex'); 
 grid on;
+set(gcf, 'Position', [100, 100, 800, 600]);
 
 
 % Find the best model order with minimum MSE
@@ -60,16 +64,19 @@ grid on;
 bestOrder = modelOrders(bestOrderIndex); 
 PSDEstimatedBest = fMEM(rx_biased, bestOrder, freqPoints, 'dB'); 
 
-subplot(2,1,2);
+% subplot(2,1,2);
+figure;
 % Plot true PSD
-plot(normalizedFrequency, 10*log10(PSDTrue), '-r', 'LineWidth', 1.5);
+plot(normalizedFrequency, 10*log10(PSDTrue), '-r', 'LineWidth', lineWidth);
 hold on;
 % Plot best estimated PSD
-plot(normalizedFrequency, PSDEstimatedBest, '-b', 'LineWidth', 1.5); 
+plot(normalizedFrequency, PSDEstimatedBest, '-b', 'LineWidth', lineWidth); 
 grid on;
+set(gca, 'FontSize', 20);
 xlabel('Normalized Frequency $\times \pi$', 'FontSize', fontsize, 'interpreter', 'latex'); 
-ylabel('Power/Frequency (dB/Hz)', 'FontSize', fontsize, 'interpreter', 'latex'); 
+ylabel('Power/Freq (dB/Hz)', 'FontSize', fontsize, 'interpreter', 'latex'); 
 xlim([0 1]); 
-legend('True PSD', ['Best Estimated PSD (Model Order=' num2str(bestOrder) ')'], 'FontSize', 10, 'interpreter', 'latex', 'Location', 'best');
-title('Power Spectral Density Estimation', 'FontSize', fontsize);
+legend('True PSD', ['Best Estimated PSD (Model Order=' num2str(bestOrder) ')'], 'FontSize', 20, 'interpreter', 'latex', 'Location', 'southwest');
+% title('Power Spectral Density Estimation', 'FontSize', fontsize);
+set(gcf, 'Position', [100, 100, 800, 600]);
 

@@ -24,6 +24,8 @@ set(gca, 'FontSize', 12);
 hold on;
 stem(diag(S_Xnoise), 'filled', 'Color','b','LineWidth', 1.5); 
 legend('X', 'Xnoise', 'Location', 'best');
+set(gca, 'FontSize', 18);
+set(gcf, 'Position', [100, 100, 800, 600]);
 
 % Calculate the square error between each singular value of X and Xnoise
 square_errors = (diag(S_X) - diag(S_Xnoise)).^2;
@@ -34,4 +36,5 @@ stem(square_errors, 'filled', 'Color','b','LineWidth', 1.5);
 title('Square Error Between Singular Values of $X$ and $X_{noise}$', 'Interpreter', 'latex');
 xlabel('Index', 'Interpreter', 'latex');
 ylabel('Square Error', 'Interpreter', 'latex');
-set(gca, 'FontSize', 12);
+set(gca, 'FontSize', 18);
+set(gcf, 'Position', [100, 100, 800, 700]);

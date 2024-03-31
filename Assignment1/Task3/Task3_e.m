@@ -7,6 +7,8 @@ clc
 clear
 close all
 addpath('../Utils/');
+fontsize = 30;
+lineWidth = 3;
 
 % Parameters
 Fs = 1; % Sampling frequency                    
@@ -22,6 +24,8 @@ x = exp(1j*2*pi*0.3*t)+exp(1i*2*pi*0.32*t)+ noise;
 
 [X,R] = corrmtx(x,14,'mod');
 [S,F] = pmusic(R,2,[ ],1,'corr');
-plot(F,S,'-b','linewidth',2); set(gca,'xlim',[0.25 0.40]);
-grid on; xlabel('Hz','FontSize',12,'interpreter','latex'); 
-ylabel('Pseudospectrum','FontSize',12,'interpreter','latex');
+plot(F,S,'-b','linewidth',lineWidth); set(gca,'xlim',[0.25 0.40]);
+set(gca, 'FontSize', 20);
+grid on; xlabel('Hz','FontSize',fontsize,'interpreter','latex'); 
+ylabel('Pseudospectrum','FontSize',fontsize,'interpreter','latex');
+set(gcf, 'Position', [100, 100, 800, 650]);

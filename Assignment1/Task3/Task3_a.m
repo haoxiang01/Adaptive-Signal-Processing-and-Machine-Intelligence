@@ -10,6 +10,8 @@ clc
 clear
 close all
 addpath('../Utils/');
+fontsize = 25;
+lineWidth = 2;
 
 % Parameters
 Fs = 200; % Sampling frequency in Hz
@@ -24,37 +26,42 @@ wgn = randn(1, length(t));
 sin = 0.8*sin(2*pi*40*t) + 1.1*sin(2*pi*70*t)+ 0.3*randn(1, length(t));
 noiseFilter = filter([1/4 1/4 1/4 1/4], 1, wgn);
 
-x = wgn;
+x = sin;% adjust here for sin
 %ACF
 [rx_biased, lagsx_biased] = xcorr(x, 'biased'); % ACF
 [rx_unbiased, lagsx_unbiased] = xcorr(x, 'unbiased'); % ACF
 
 %% Plot Sin wave
-figure(1);
+figure;
 subplot(2,1,1);
-plot(lagsx_unbiased, rx_unbiased, 'r', 'LineWidth', 1.5);
+plot(lagsx_unbiased, rx_unbiased, 'r', 'LineWidth', lineWidth);
 hold on;
-plot(lagsx_biased, rx_biased, 'b', 'LineWidth', 1.5);
-title('ACF', 'Interpreter', 'latex');
-xlabel('Time lag (s)', 'Interpreter', 'latex');
-ylabel('Amplitude', 'Interpreter', 'latex');
-legend('UnBiased', 'Biased', 'Location', 'best');
+plot(lagsx_biased, rx_biased, 'b', 'LineWidth', lineWidth);
+set(gca, 'FontSize', 18);
+title('$\textbf{ACF}$', 'FontSize',fontsize,'interpreter','latex');
+xlabel('Time lag (s)', 'FontSize',fontsize,'interpreter','latex');
+ylabel('Amplitude', 'FontSize',fontsize,'interpreter','latex');
+legend('UnBiased', 'Biased', 'FontSize',20,'interpreter','latex','Location', 'northeast');
 grid on;
 hold off;
+set(gcf, 'Position', [100, 100, 800, 600]);
+set(gcf, 'Color', 'w');
 
 % Correlogram
 subplot(2,1,2);
+% figure;
 [Pxx_biased, fx_biased] = fcorrgram(rx_biased, nfft, Fs, lagsx_biased);
 [Pxx_unbiased, fx_unbiased]= fcorrgram(rx_unbiased, nfft, Fs, lagsx_unbiased);
 
-plot(fx_unbiased, Pxx_unbiased, 'LineWidth', 1.5, 'Color', 'r', 'LineStyle', '-'); 
+plot(fx_unbiased, Pxx_unbiased, 'LineWidth', lineWidth, 'Color', 'r', 'LineStyle', '-'); 
 hold on;
-plot(fx_biased, Pxx_biased, 'LineWidth', 1.5, 'Color', 'b', 'LineStyle', '-');
-
-title('Correlogram', 'Interpreter', 'latex');
-xlabel('Frequency (Hz)', 'Interpreter', 'latex');
-ylabel('Power/Frequency (Watt/Hz)', 'Interpreter', 'latex');
-legend('UnBiased', 'Biased', 'Location', 'best');
+plot(fx_biased, Pxx_biased, 'LineWidth', lineWidth, 'Color', 'b', 'LineStyle', '-');
+set(gca, 'FontSize', 18);
+title('$\textbf{Correlogram}$', 'FontSize',fontsize,'interpreter','latex');
+xlabel('Frequency (Hz)', 'FontSize',fontsize,'interpreter','latex');
+ylabel('Power/Freq', 'FontSize',fontsize,'interpreter','latex');
+legend('UnBiased', 'Biased', 'FontSize',20,'interpreter','latex', 'Location', 'northeast');
 grid on;
 hold off;
+set(gcf, 'Position', [100, 100, 800, 700]);
 set(gcf, 'Color', 'w');

@@ -7,6 +7,8 @@ clc
 clear
 close all
 addpath('../Utils/');
+fontsize = 20;
+lineWidth = 2;
 
 % Parameters
 Fs = 200; % Sampling frequency                    
@@ -35,9 +37,10 @@ end
 P_mean = P_mean ./ sampleNum;
 f_mean = fx_biased;
 plot(f_mean, P_mean, '-b','LineWidth', 3);
-title('PSD estimates (different realisations and mean)', 'Interpreter', 'latex');
-xlabel('Frequency (Hz)', 'Interpreter', 'latex');
-ylabel('Power/Frequency (Watt/Hz)', 'Interpreter', 'latex');
+set(gca, 'FontSize', 20);
+title('PSD estimates (different realisations and mean)', 'FontSize',fontsize,'interpreter','latex');
+xlabel('Frequency (Hz)', 'FontSize',fontsize,'interpreter','latex');
+% ylabel('Power/Frequency (Watt/Hz)', 'Interpreter', 'latex');
 grid on;
 set(gcf, 'Color', 'w');
 hold off;
@@ -47,8 +50,11 @@ P_std = sqrt(1/sampleNum * sum((P_sets - P_mean).^2, 2));
 subplot(2,1,2);
 f_std = fx_biased;
 plot(f_std, P_std,'-r','LineWidth', 3);
-title('Standard deviation of the PSD estimate', 'Interpreter', 'latex');
-xlabel('Frequency (Hz)', 'Interpreter', 'latex');
-ylabel('Power/Frequency (Watt/Hz)', 'Interpreter', 'latex');
+set(gca, 'FontSize', 20);
+title('Standard deviation of the PSD estimate', 'FontSize',fontsize,'interpreter','latex');
+xlabel('Frequency (Hz)', 'FontSize',fontsize,'interpreter','latex');
+% ylabel('Power/Frequency (Watt/Hz)', 'Interpreter', 'latex');
 grid on;
 set(gcf, 'Color', 'w');
+set(gcf, 'Position', [100, 100, 800, 650]);
+

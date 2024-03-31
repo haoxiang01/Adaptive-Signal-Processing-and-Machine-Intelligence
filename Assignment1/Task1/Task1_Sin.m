@@ -9,7 +9,8 @@ clc
 clear
 close all
 addpath('../Utils/');
-
+fontsize = 35;
+lineWidth = 3.5;
 % Parameters
 Fs = 1000; % Sampling frequency in Hz
 T = 1/Fs; % Sampling period in s
@@ -32,34 +33,39 @@ x = 0.5*sin(2*pi*f*t)+0.5*randn(1, length(t));% Sinusoid + WGN
 figure;
 
 % Signal sequence
-subplot(3,1,1)
-plot(t, x, 'b','LineWidth',  1.5);
-title('Sinusoidal Signal Sequence $x(t)$', 'Interpreter', 'latex');
-xlabel('Time (s)', 'Interpreter', 'latex');
-ylabel('Amplitude', 'Interpreter', 'latex');
+plot(t, x, 'b','LineWidth',  lineWidth);
+set(gca, 'FontSize', 20);
+% title('Sinusoidal Signal Sequence $x(t)$', 'Interpreter', 'latex');
+xlabel('Time (s)', 'FontSize',fontsize,'interpreter','latex');
+ylabel('Amplitude', 'FontSize',fontsize,'interpreter','latex');
 grid on;
+set(gcf, 'Position', [100, 100, 800, 600]);
 
 % ACF
-subplot(3,1,2)
-plot(lags*T, acf_x,'b', 'LineWidth', 1.5);
-title('ACF of Sinusoidal Signal $x(t)$', 'Interpreter', 'latex');
-xlabel('Time lag (s)', 'Interpreter', 'latex');
-ylabel('Amplitude', 'Interpreter', 'latex');
+figure;
+plot(lags*T, acf_x,'b', 'LineWidth', lineWidth);
+% xlim([-0.05 0.05])
+set(gca, 'FontSize', 20);
+% title('ACF of Sinusoidal Signal $x(t)$', 'FontSize',fontsize,'interpreter','latex');
+xlabel('Time lag (s)', 'FontSize',fontsize,'interpreter','latex');
+ylabel('Amplitude', 'FontSize',fontsize,'interpreter','latex');
+set(gcf, 'Position', [100, 100, 800, 600]);
 grid on;
 
 
-subplot(3,1,3)
+figure;
 hold on;
 % PSD def1
-plot(f_pxx1, 10*log10(pxx1_x), 'LineWidth', 2, 'Color', 'r', 'LineStyle', '-');
+plot(f_pxx1, 10*log10(pxx1_x), 'LineWidth', lineWidth, 'Color', 'r', 'LineStyle', '-');
 
 % PSD def2
-plot(f_pxx2, 10*log10(pxx2_x), 'LineWidth', 2, 'Color', 'b', 'LineStyle', '--'); 
-
-title('PSD (Def-1 and Def-2) of Sinusoidal Signal $x(t)$', 'Interpreter', 'latex');
-xlabel('Frequency (Hz)', 'Interpreter', 'latex');
-ylabel('Power/Frequency (dB/Hz)', 'Interpreter', 'latex');
-legend('PSD Def-1', 'PSD Def-2', 'Location', 'best');
+plot(f_pxx2, 10*log10(pxx2_x), 'LineWidth', lineWidth, 'Color', 'b', 'LineStyle', '--'); 
+set(gca, 'FontSize', 20);
+% title('PSD (Def-1 and Def-2) of Sinusoidal Signal $x(t)$', 'FontSize',fontsize,'interpreter','latex');
+xlabel('Frequency (Hz)', 'FontSize',fontsize,'interpreter','latex');
+ylabel('Power/Frequency (dB/Hz)', 'FontSize',fontsize,'interpreter','latex');
+legend('PSD Def-1', 'PSD Def-2', 'FontSize',25,'interpreter','latex', 'Location', 'southeast');
 grid on;
 hold off;
 set(gcf, 'Color', 'w');
+set(gcf, 'Position', [100, 100, 800, 600]);

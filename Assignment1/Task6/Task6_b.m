@@ -32,6 +32,8 @@ ylabel('Singular Value', 'Interpreter', 'latex');
 set(gca, 'FontSize', 12);
 hold off;
 legend('X', 'Xnoise', 'Xdenoise', 'Location', 'best');
+set(gca, 'FontSize', 18);
+set(gcf, 'Position', [100, 100, 800, 600]);
 
 %error
 error_noise = mean((X-Xnoise).^2);
@@ -45,3 +47,5 @@ set(gca, 'FontSize', 12);
 hold on;
 stem(error_denoise, 'filled', 'Color','b','LineWidth', 1.5); 
 legend('Xnoise', 'Xdenoise', 'Location', 'best');
+set(gca, 'FontSize', 18);
+set(gcf, 'Position', [100, 100, 800, 700]);

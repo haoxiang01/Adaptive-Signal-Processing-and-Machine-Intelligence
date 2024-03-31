@@ -7,6 +7,8 @@ clc
 clear
 close all
 addpath('../Utils/');
+fontsize = 30;
+lineWidth = 2;
 
 % Parameters
 Fs = 1; % Sampling frequency                    
@@ -23,16 +25,18 @@ for i=1:length(N_sets)
     noise = 0.2/sqrt(2)*(randn(1,N)+1i*randn(1,N));
     x = exp(1j*2*pi*0.3*t)+exp(1i*2*pi*0.32*t)+ noise;
     [Pxx, fx] = periodogram(x,[],nfft,Fs);
-    plot(fx, 10*log10(Pxx), 'Color', color_sets(i) ,'LineWidth', 2);
+    plot(fx, 10*log10(Pxx), 'Color', color_sets(i) ,'LineWidth', lineWidth);
     hold on;
 end
-xlabel('Frequency (Hz)', 'Interpreter', 'latex');
-ylabel('Power/Frequency (dB/Hz)', 'Interpreter', 'latex');
+set(gca, 'FontSize', 20);
+xlabel('Frequency (Hz)', 'FontSize',fontsize,'interpreter','latex');
+ylabel('Power/Freq (dB/Hz)', 'FontSize',fontsize,'interpreter','latex');
 legend('30', '45','60','Location', 'best');
 grid on;
 hold off;
 set(gcf, 'Color', 'w');
-
+set(gcf, 'Color', 'w');
+set(gcf, 'Position', [100, 100, 800, 650]);
 
 
 
