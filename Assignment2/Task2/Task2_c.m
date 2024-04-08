@@ -9,11 +9,11 @@ clear
 close all
 addpath('../Utils/');
 
-fontsize = 18;
+fontsize = 23;
 lineWidth = 2;
 M = 1;
 num = 2001;
-rho = 0.0002;
+rho = 0.005;
 K = 100;
 mu = 0.01; % adjust here
 w_GNGD_Avg = zeros(M, num+1);
@@ -34,15 +34,15 @@ for k = 1:K
     e_GNGD_Avg = e_GNGD_Avg + 10*log10(e_GNGD.^2);
     
     [w_B,e_B] = fLMS_GASS_MA1(x, eta, 'B', mu, rho, M);
-    w_B_Avg = w_B_Avg + w_B;   
+    w_B_Avg = w_B_Avg +  w_B;   
     e_B_Avg = e_B_Avg + 10*log10(e_B.^2);
 end
 
 w_B_Avg = w_B_Avg ./K;
 w_GNGD_Avg = w_GNGD_Avg ./K;
 
-e_B_Avg = w_B_Avg ./K;
-e_GNGD_Avg = w_GNGD_Avg ./K;
+e_B_Avg = e_B_Avg ./K;
+e_GNGD_Avg = e_GNGD_Avg ./K;
 
 
 % Plotting
@@ -50,7 +50,7 @@ figure;
 plot(w_GNGD_Avg(1,:), '-b', 'LineWidth', lineWidth);
 hold on;
 plot(w_B_Avg(1,:), '-r', 'LineWidth', lineWidth);
-
+set(gca, 'FontSize', 18);
 grid on; 
 xlim([0, 2000]); 
 
@@ -61,7 +61,7 @@ legend(['GNGD $\mu$ = ' num2str(mu)], ['Benveniste $\mu$(0) = ' num2str(mu)], ..
 xlabel('Step $n$', 'FontSize', fontsize, 'interpreter', 'latex');
 ylabel('Estimated Weight $w(n)$', 'FontSize', fontsize, 'interpreter', 'latex');
 title(['Weight Estimation ($\mu$ = ' num2str(mu) ', $\rho$ = ' num2str(rho) ')'],'FontSize',fontsize, 'interpreter', 'latex');
-set(gca, 'FontSize', fontsize);
 set(gcf, 'Position', [100, 100, 800, 600]); 
-
+xlim([0,200])
+% ylim([-0.2,1.0])
 

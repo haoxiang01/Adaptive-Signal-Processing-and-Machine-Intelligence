@@ -7,7 +7,7 @@
 clc;
 clear variables;
 close all;
-fontsize = 30;
+fontsize = 25;
 lineWidth = 2;
 
 addpath('../Utils/');
@@ -50,7 +50,7 @@ for i = 1:length(modelOrders)
 end
 
 figure;
-% subplot(2,1,1);
+subplot(2,1,1);
 semilogy(modelOrders, mseErrors, 'r-*', 'LineWidth', lineWidth); % Plot MSE vs. model order
 set(gca, 'FontSize', 20);
 xlabel('Model Order $p$', 'FontSize', fontsize, 'interpreter', 'latex'); 
@@ -64,8 +64,8 @@ set(gcf, 'Position', [100, 100, 800, 600]);
 bestOrder = modelOrders(bestOrderIndex); 
 PSDEstimatedBest = fMEM(rx_biased, bestOrder, freqPoints, 'dB'); 
 
-% subplot(2,1,2);
-figure;
+subplot(2,1,2);
+% figure;
 % Plot true PSD
 plot(normalizedFrequency, 10*log10(PSDTrue), '-r', 'LineWidth', lineWidth);
 hold on;
@@ -78,5 +78,5 @@ ylabel('Power/Freq (dB/Hz)', 'FontSize', fontsize, 'interpreter', 'latex');
 xlim([0 1]); 
 legend('True PSD', ['Best Estimated PSD (Model Order=' num2str(bestOrder) ')'], 'FontSize', 20, 'interpreter', 'latex', 'Location', 'southwest');
 % title('Power Spectral Density Estimation', 'FontSize', fontsize);
-set(gcf, 'Position', [100, 100, 800, 600]);
+set(gcf, 'Position', [100, 100, 800, 750]);
 

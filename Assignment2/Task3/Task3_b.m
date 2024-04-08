@@ -16,7 +16,7 @@ sigma = 1;
 N = 1000;
 n = 1:N;
 mu = 0.01;
-epoch = 1000;
+epoch = 100;
 deltas = 0:25;
 M = [5,10,15,20]; % Order
 MSPEs = zeros(length(deltas),1);
@@ -47,8 +47,8 @@ plot(deltas, 10*log10(MSPEs),'Marker',markers{m},'Color', colors(m),'LineWidth',
 hold on;grid on;
 end
 set(gca, 'FontSize', 16);
-legend('$M$ = 5','$M$ = 10','$M$ = 15','$M$ = 20','FontSize',fontsize,'interpreter','latex','Location', 'northeast');
+legend('$M$ = 5','$M$ = 10','$M$ = 15','$M$ = 20','FontSize',fontsize,'interpreter','latex','Location', 'southeast');
 xlabel('Delay $\Delta$','FontSize',fontsize,'interpreter','latex');
 ylabel('MSPE $(dB)$','FontSize',fontsize,'interpreter','latex');
-xlim([0,25]);
+xlim([3,25]);
 set(gcf, 'Position', [100, 100, 800, 600]); 

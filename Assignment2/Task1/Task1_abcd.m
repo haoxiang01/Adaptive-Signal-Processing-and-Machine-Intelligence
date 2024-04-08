@@ -21,7 +21,7 @@ linewidth = 1;
 FontSize = 16;
 %% AR model
 model = arima('AR',a,'Constant',0,'Variance',sigma);
-x = simulate(model, N,'Numpaths',100);
+x = simulate(model, N,'Numpaths',epoch);
 
 %% MSE
 errors_1 = zeros(epoch,N-2);

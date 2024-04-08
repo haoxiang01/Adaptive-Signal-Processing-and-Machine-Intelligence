@@ -46,7 +46,7 @@ fprintf('Test Error PCR: %.4f\n', e_PCR_T);
 
 %% d
 %% Performance on extra testing set
-loops = 10000;
+loops = 1000;
 e_OLS_extra = 0;
 e_PCR_extra = 0;
 for i = 1:loops

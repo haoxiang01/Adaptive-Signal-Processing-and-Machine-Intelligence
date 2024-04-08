@@ -16,12 +16,12 @@ data = RAW_ECG(:,2);
 
 figure
 plot(data)
-trial1 = data(24003:95363);
-trial2 = data(135363:215363);
-trial3 = data(245363:315363);
-[xRRI1,fsRRI1] = ECG_to_RRI(trial1,500,'ampthresh', 0.5*10e-5,'anomalyparam',10);
+trial1 = data(1:111123);
+trial2 = data(113969:227334);
+trial3 = data(232879:end);
+[xRRI1,fsRRI1] = ECG_to_RRI(trial1,500,'ampthresh', 0.55*10e-5,'anomalyparam',10);
 save('xRRI1.mat', 'xRRI1');
-[xRRI2,fsRRI2] = ECG_to_RRI(trial2,500,'ampthresh', 0.5*10e-5,'anomalyparam',10);
+[xRRI2,fsRRI2] = ECG_to_RRI(trial2,500,'ampthresh', 0.55*10e-5,'anomalyparam',10);
 save('xRRI2.mat', 'xRRI2');
-[xRRI3,fsRRI3] = ECG_to_RRI(trial3,500,'ampthresh', 0.5*10e-5,'anomalyparam',10);
+[xRRI3,fsRRI3] = ECG_to_RRI(trial3,500,'ampthresh', 0.55*10e-5,'anomalyparam',10);
 save('xRRI3.mat', 'xRRI3');

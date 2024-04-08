@@ -39,7 +39,7 @@ print(fig, '2.3.4a.pdf', '-dpdf', '-fillpage')
 
 %% ANC
 mu = 0.01;
-M = 300;
+M = 50;
 sigma = 0.01;
 n = (0:L-1) * T;
 u = sin(2 * pi * 50 * n)' + sqrt(sigma) * randn(L,1); % reference signal

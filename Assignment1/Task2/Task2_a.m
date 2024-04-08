@@ -46,7 +46,7 @@ set(gca, 'FontSize', 20);
 xlabel('Year', 'FontSize',fontsize,'interpreter','latex');
 ylabel('Numbers', 'FontSize',fontsize,'interpreter','latex');
 grid on;
-legend('Original', 'Mean Removed', 'Trend Removed','FontSize', 20,'interpreter','latex');
+legend('Original', 'Mean Removed', 'Trend Removed','FontSize', 25,'interpreter','latex');
 set(gcf, 'Position', [100, 100, 800, 600]);
 
 figure(2);
@@ -59,7 +59,7 @@ set(gca, 'FontSize', 20);
 % title('Spectral Estimates Comparison', 'FontSize', 12, 'FontWeight', 'Bold');
 xlabel('Normalized Frequency', 'FontSize', fontsize,'interpreter','latex');
 ylabel('PSD (dB/Hz)', 'FontSize',fontsize,'interpreter','latex');
-legend('show', 'FontSize',20,'interpreter','latex', 'Location', 'best');
+legend('show', 'FontSize',25,'interpreter','latex', 'Location', 'northeast');
 grid on;
 set(gcf, 'Position', [100, 100, 800, 600]);
 
@@ -73,5 +73,5 @@ set(gca, 'FontSize', 20);
 xlabel('Year','FontSize', fontsize,'interpreter','latex');
 ylabel('Numbers', 'FontSize', fontsize,'interpreter','latex');
 grid on;
-legend('Original', 'Logarithmic Mean Removed', 'FontSize', 20,'interpreter','latex');
+legend('Original', 'Log Mean Removed', 'FontSize', 25,'interpreter','latex');
 set(gcf, 'Position', [100, 100, 800, 600]);

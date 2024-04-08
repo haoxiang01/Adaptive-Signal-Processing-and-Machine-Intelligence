@@ -8,7 +8,7 @@ clc;
 clear variables;
 close all;
 fontsize = 30;
-lineWidth = 2;
+lineWidth = 1.5;
 addpath('../Utils/');
 addpath('../data/');
 load ('xRRI1.mat');
@@ -41,10 +41,10 @@ f_n = fsRRI*(0:(nfft/2))/nfft;
 [P_RRI_3,f_RRI_3] = periodogram(xRRI3,[],nfft,fsRRI);
 figure(2);
 
-plot(f_RRI_1, 10*log10(P_RRI_1), 'r', 'LineWidth', lineWidth);
+plot(f_RRI_1, 10*log10(P_RRI_1), 'g', 'LineWidth', lineWidth);
 hold on;
-plot(f_RRI_2, 10*log10(P_RRI_2), 'g', 'LineWidth', lineWidth);
-plot(f_RRI_3, 10*log10(P_RRI_3), 'b', 'LineWidth', lineWidth);
+plot(f_RRI_2, 10*log10(P_RRI_2), 'b', 'LineWidth', lineWidth);
+plot(f_RRI_3, 10*log10(P_RRI_3), 'r', 'LineWidth', lineWidth);
 % title("Standard Periodogram");
 set(gca, 'FontSize', 20);
 xlabel('Frequency (Hz)','FontSize', fontsize, 'interpreter', 'latex');
@@ -52,20 +52,21 @@ ylabel('Power/Freq (dB/Hz)','FontSize', fontsize, 'interpreter', 'latex');
 grid on;
 legend("Trial1","Trial2","Trial3", 'FontSize', 20, 'interpreter', 'latex','Location', 'best');
 set(gcf, 'Position', [100, 100, 800, 600]);
-
+ylim([-50 20])
 %% Bartlett periodogram
-tLen = 150;
+tLen = 50;
 wLen = tLen*fsRRI;
 [P_bartlett_1, f_bartlett_1] = fBartlett(xRRI1',fsRRI,nfft,wLen);
 [P_bartlett_2, f_bartlett_2] = fBartlett(xRRI2',fsRRI,nfft,wLen);
 [P_bartlett_3, f_bartlett_3] = fBartlett(xRRI3',fsRRI,nfft,wLen);
 figure(3);
 
-plot(f_bartlett_1, 10*log10(P_bartlett_1), 'r', 'LineWidth', lineWidth);
+plot(f_bartlett_1, 10*log10(P_bartlett_1), 'g', 'LineWidth', lineWidth);
 hold on;
-plot(f_bartlett_2, 10*log10(P_bartlett_2), 'g', 'LineWidth', lineWidth);
-plot(f_bartlett_3, 10*log10(P_bartlett_3), 'b', 'LineWidth', lineWidth);
+plot(f_bartlett_2, 10*log10(P_bartlett_2), 'b', 'LineWidth', lineWidth);
+plot(f_bartlett_3, 10*log10(P_bartlett_3), 'r', 'LineWidth', lineWidth);
 set(gca, 'FontSize', 20);
+ylim([-50 20])
 % title(['Bartlett Periodogram, Window length=' num2str(tLen) 's'],'FontSize',fontsize,'interpreter','latex');
 xlabel('Frequency (Hz)','FontSize', fontsize, 'interpreter', 'latex');
 ylabel('Power/Freq (dB/Hz)','FontSize', fontsize, 'interpreter', 'latex');
@@ -86,11 +87,12 @@ PSD_RRI_3_AR = fARSpectrum(-coeff3(2:end), coeff3(1), nfft,'dB');
 figure(4);
 
 % Plot true PSD
-plot(f_n,PSD_RRI_1_AR(1:nfft/2+1) , '-r', 'LineWidth', lineWidth);
+lineWidth =2;
+plot(f_n,PSD_RRI_1_AR(1:nfft/2+1) , '-g', 'LineWidth', lineWidth);
 hold on;
 % Plot best estimated PSD
 plot(f_n,PSD_RRI_2_AR(1:nfft/2+1) , '-b', 'LineWidth', lineWidth);
-plot(f_n,PSD_RRI_3_AR(1:nfft/2+1), '-g', 'LineWidth', lineWidth);
+plot(f_n,PSD_RRI_3_AR(1:nfft/2+1), '-r', 'LineWidth', lineWidth);
 grid on;
 set(gca, 'FontSize', 20);
 xlabel('Frequency (Hz)', 'FontSize', fontsize, 'interpreter', 'latex'); 

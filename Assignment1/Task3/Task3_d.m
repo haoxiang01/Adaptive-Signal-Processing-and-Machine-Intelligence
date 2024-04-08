@@ -7,7 +7,7 @@ clc
 clear
 close all
 addpath('../Utils/');
-fontsize = 30;
+fontsize = 25;
 lineWidth = 2;
 
 % Parameters
@@ -31,7 +31,8 @@ end
 set(gca, 'FontSize', 20);
 xlabel('Frequency (Hz)', 'FontSize',fontsize,'interpreter','latex');
 ylabel('Power/Freq (dB/Hz)', 'FontSize',fontsize,'interpreter','latex');
-legend('30', '45','60','Location', 'best');
+legend('N = 30', 'N = 45',['' ...
+    'N = 60'],'FontSize',fontsize,'interpreter','latex','Location', 'northeast');
 grid on;
 hold off;
 set(gcf, 'Color', 'w');
